@@ -1,6 +1,6 @@
 # Famly Assignment
 
-This project provides a simple and intuitive interface to manage child check-ins and pickups. The UI features a table that displays basic information about the children, with two actions available based on the check-in status.
+This project provides a simple interface to manage child check-ins and pickups. The UI features a table that displays basic information about the children, with two actions available based on the check-in status.
 
 - If a child isn't checked in, the user can initiate the check in process by specify the pickup time, which opens a dialog to record the pickup time.
 - If a child has been picked up, the user can confirm the pickup.
