@@ -16,7 +16,7 @@ const getChildrenParams = {
 const queryString = new URLSearchParams(getChildrenParams).toString();
 
 export function useGetChildrenData(
-  options?: SWRConfiguration<ChildrenDataType, Error>
+  options?: SWRConfiguration<ChildrenDataType, Error>,
 ) {
   const {
     data: childrenData,
@@ -35,11 +35,9 @@ export function useGetChildrenData(
         return response.children;
       }),
     {
-      revalidateIfStale: false,
-      revalidateOnFocus: false,
       revalidateOnReconnect: false,
       ...options,
-    }
+    },
   );
 
   return {

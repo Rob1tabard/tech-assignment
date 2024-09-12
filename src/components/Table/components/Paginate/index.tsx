@@ -1,4 +1,3 @@
-import { useMemo } from "react";
 import {
   ChevronDoubleLeftIcon,
   ChevronDoubleRightIcon,
@@ -11,7 +10,6 @@ import { ChildrenDataType } from "@/utils/swr/useGetChildrenData/type";
 
 //utils
 import { useGetChildrenData } from "@/utils/swr/useGetChildrenData";
-import { splitArray } from "@/utils/helper/splitArray";
 
 //lib
 import { pageItemsNumber } from "@/lib/paginateConfig/pageItemsNumber";
@@ -25,10 +23,14 @@ type PaginateProps = {
 export function Paginate({ cursor, setCursor }: PaginateProps) {
   const { childrenData } = useGetChildrenData();
 
-  const pages = useMemo(() => {
-    /* Here I own the type responsibility of childrenData since it has been fetch in a parent component*/
-    return splitArray(childrenData as ChildrenDataType, pageItemsNumber).length;
-  }, [childrenData]);
+  const pages = Math.ceil(
+    (childrenData as ChildrenDataType)?.length / pageItemsNumber,
+  );
+
+  // if there are no pages, return null
+  if (!pages) {
+    return null;
+  }
 
   return (
     <div className="flex justify-end">

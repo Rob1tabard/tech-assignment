@@ -43,14 +43,17 @@ function CheckInModalContent({ child, close }: CheckInModalContentProps) {
     error: "",
   });
 
-  async function handleCheckIn() {
+  async function handleCheckIn(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
     try {
       setRequestState({ isLoading: true, error: "" });
+      /*Formatted arams */
+      const params = new URLSearchParams({
+        accessToken: import.meta.env.VITE_API_ACCESS_TOKEN,
+        pickupTime,
+      }).toString();
       const response = await fetch(
-        POST_CHECK_IN_CHILD.replace("<childId>", child.childId) +
-          `?accessToken=${
-            import.meta.env.VITE_API_ACCESS_TOKEN
-          }&pickupTime=${pickupTime}`,
+        `${POST_CHECK_IN_CHILD.replace("<childId>", child.childId)}?${params}`,
         {
           method: "POST",
         },
@@ -105,7 +108,7 @@ function CheckInModalContent({ child, close }: CheckInModalContentProps) {
           {requestState.error}
         </span>
       ) : null}
-      <div className="flex flex-col space-y-4">
+      <form className="flex flex-col space-y-4" onSubmit={handleCheckIn}>
         <label
           className="block w-max text-sm font-semibold hover:cursor-pointer"
           htmlFor="pickup-time"
@@ -116,7 +119,7 @@ function CheckInModalContent({ child, close }: CheckInModalContentProps) {
           id="pickup-time"
           disabled={requestState.isLoading}
           value={pickupTime}
-          className="block rounded border p-1"
+          className="block rounded border p-1 focus:outline-none focus:ring-1 focus:ring-blue-400 focus:ring-offset-1"
           name="pickup-time"
           type="time"
           onChange={(e) => setPickupTime(e.target.value)}
@@ -124,12 +127,11 @@ function CheckInModalContent({ child, close }: CheckInModalContentProps) {
         <Button
           className="rounded bg-blue-500 p-2 text-base text-white"
           disabled={!pickupTime || requestState.isLoading}
-          onClick={handleCheckIn}
           isLoading={requestState.isLoading}
         >
           <span>Confirm check in</span>
         </Button>
-      </div>
+      </form>
     </>
   );
 }

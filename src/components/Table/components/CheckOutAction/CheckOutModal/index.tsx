@@ -47,11 +47,12 @@ function CheckOutModalContent({
   async function handleCheckOut() {
     try {
       setRequestState({ isLoading: true, error: "" });
+      /* Formatted params */
+      const params = new URLSearchParams({
+        accessToken: import.meta.env.VITE_API_ACCESS_TOKEN,
+      }).toString();
       const response = await fetch(
-        `${POST_CHECKOUT_CHILD.replace(
-          "<childId>",
-          child.childId,
-        )}?accessToken=${import.meta.env.VITE_API_ACCESS_TOKEN}`,
+        `${POST_CHECKOUT_CHILD.replace("<childId>", child.childId)}?${params}`,
         {
           method: "POST",
         },
