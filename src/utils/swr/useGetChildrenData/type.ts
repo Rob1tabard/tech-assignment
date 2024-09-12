@@ -10,6 +10,10 @@ export type ChildType = {
   image: {
     small: string;
   };
+  checkins: {
+    childId: string;
+    pickupTime: string;
+  }[];
 };
 
 export type ChildrenDataType = ChildType[];

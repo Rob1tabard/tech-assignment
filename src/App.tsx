@@ -2,7 +2,7 @@ import { Overview } from "@/pages/Overview";
 
 function App() {
   return (
-    <main className="w-full min-h-[100dvh] flex flex-col p-10 space-y-8">
+    <main className="flex min-h-[100dvh] w-full flex-col space-y-12 p-10">
       <Overview />
     </main>
   );

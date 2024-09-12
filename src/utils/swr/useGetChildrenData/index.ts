@@ -35,7 +35,6 @@ export function useGetChildrenData(
         return response.children;
       }),
     {
-      shouldRetryOnError: false,
       revalidateIfStale: false,
       revalidateOnFocus: false,
       revalidateOnReconnect: false,

@@ -14,7 +14,7 @@ import {
   TableError,
   TableLoading,
 } from "@/components/Table";
-import { Paginate } from "@/components/Paginate";
+import { Paginate } from "@/components/Table/components/Paginate";
 
 export function OverviewContent() {
   const { childrenData, isLoading, childrenDataError } = useGetChildrenData();
@@ -29,10 +29,10 @@ export function OverviewContent() {
   const displayedData = getItemsToDisplay(
     childrenData,
     cursor,
-    pageItemsNumber
+    pageItemsNumber,
   );
   return (
-    <div className="flex flex-col space-y-2 items-end">
+    <div className="flex flex-col space-y-2">
       <TableContent childrenData={displayedData} />
       <Paginate cursor={cursor} setCursor={setCursor} />
     </div>

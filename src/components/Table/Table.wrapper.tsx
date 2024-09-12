@@ -4,14 +4,15 @@ type TableWrapperProps = {
 
 export function TableWrapper({ children }: TableWrapperProps) {
   return (
-    <div className="w-full bg-gray-50 border border-gray-300 rounded-md">
+    <div className="w-full overflow-x-scroll rounded-md border border-gray-300 bg-gray-50/50">
       <table className="mt-6 w-full whitespace-nowrap text-left">
         <colgroup>
           <col className="w-full sm:w-4/12" />
           <col className="lg:w-2/12" />
           <col className="lg:w-1/12" />
+          <col className="lg:w-1/12" />
         </colgroup>
-        <thead className="border-b border-gray-70000/10 text-sm leading-6 ">
+        <thead className="border-gray-70000/10 border-b text-sm leading-6">
           <tr>
             <th
               scope="col"
@@ -23,17 +24,23 @@ export function TableWrapper({ children }: TableWrapperProps) {
               scope="col"
               className="hidden py-2 pl-0 pr-8 font-semibold sm:table-cell"
             >
-              Checked in
+              Status
             </th>
             <th
               scope="col"
               className="hidden py-2 pl-0 pr-8 font-semibold sm:table-cell"
             >
-              Edit
+              Pickup Time
+            </th>
+            <th
+              scope="col"
+              className="hidden py-2 pl-0 pr-8 font-semibold sm:table-cell"
+            >
+              Actions
             </th>
           </tr>
         </thead>
-        <tbody className="divide-y divide-gray-700/5 relative">
+        <tbody className="relative divide-y divide-gray-700/5">
           {children}
         </tbody>
       </table>
