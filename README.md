@@ -1,79 +1,26 @@
-# Interested in working for Famly?
+# Famly Assignment
 
-Give us a chance to see your beautiful code! 🤩
+This project provides a simple and intuitive interface to manage child check-ins and pickups. The UI features a table that displays basic information about the children, with two actions available based on the check-in status.
 
-## How to get started
-- Fork this repository
-- Create a small application in React (or another agreed upon framework)
-- Describe your design decisions and setup instructions in the README.md of the forked repository
+- If a child isn't checked in, the user can initiate the check in process by specify the pickup time, which opens a dialog to record the pickup time.
+- If a child has been picked up, the user can confirm the pickup.
 
-## The assignment
-You are tasked to build a simple application for a nursery to manage the attendance of children each day.
+## Getting Started
 
-It has to be done using Typescript.
+Follow these steps to set up the project:
 
-The application should be able to do 3 things:
-1. List children with some form of pagination/lazy-loading/infinite-scroll
-2. Checkin a child
-3. Checkout a child
-
-Don't worry about design or anything like that.
-
-If you have any questions feel free to reach out to the person who sent you the assignment ☺️
-
-## API Specification
-
-You have received an access token in the email that contained the link to this page.
-
-### Fetch some children from
-
-The API does not support any limit or offset, so the pagination/lazy-loading/infinite-scroll will have to be done client-side only.
-
-```
-GET https://app.famly.co/api/daycare/tablet/group
-Arguments: {
-	accessToken: <accessToken>,
-	groupId: '86413ecf-01a1-44da-ba73-1aeda212a196',
-	institutionId: 'dc4bd858-9e9c-4df7-9386-0d91e42280eb'
-}
-```
-
-Example in cURL:
+1. Create a `.env` file using the structure provided in `.env.example`.
+2. Ensure you have your own `API_ACCESS_TOKEN` available and update the `.env` file with it.
+3. Install the required dependencies by running:
 
 ```bash
-curl "https://app.famly.co/api/daycare/tablet/group?accessToken=<accessToken>&groupId=86413ecf-01a1-44da-ba73-1aeda212a196&institutionId=dc4bd858-9e9c-4df7-9386-0d91e42280eb"
+   npm install
 ```
 
-### Checkin child
-```
-POST https://app.famly.co/api/v2/children/<childId>/checkins
-
-Arguments: {
-	accessToken: <accessToken>
-	pickupTime: 16:00
-}
-```
-
-Example in cURL:
+4.Start the development server:
 
 ```bash
-curl \
-  -d 'accessToken=<accessToken>&pickupTime=16:00' \
-  https://app.famly.co/api/v2/children/fcd683d0-bc31-468c-948f-1ca70b91439d/checkins
+	npm run dev
 ```
 
-### Checkout child
-```
-POST https://app.famly.co/api/v2/children/<childId>/checkout
-Arguments: {
-	accessToken: <accessToken>
-}
-```
-
-Example in cURL:
-
-```bash
-curl \
-  -d 'accessToken=<accessToken>' \
-  https://app.famly.co/api/v2/children/fcd683d0-bc31-468c-948f-1ca70b91439d/checkout
-```
+You're all set to go!
