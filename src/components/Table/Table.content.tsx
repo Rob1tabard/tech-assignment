@@ -10,10 +10,15 @@ import type { ChildType } from "@/utils/swr/useGetChildrenData/type";
 import { TableWrapper } from "@/components/Table/Table.wrapper";
 import { CheckInAction } from "@/components/Table/components/CheckInAction";
 import { CheckOutAction } from "@/components/Table/components/CheckOutAction";
+import { TableEmpty } from "@/components/Table/Table.empty";
 
 type TableContent = { childrenData: ChildType[] };
 
 export function TableContent({ childrenData }: TableContent) {
+  if (!childrenData.length) {
+    return <TableEmpty message="No children found" />;
+  }
+
   return (
     <TableWrapper>
       {childrenData.map((child) => (

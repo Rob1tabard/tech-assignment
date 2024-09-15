@@ -6,26 +6,25 @@ import {
 } from "@heroicons/react/16/solid";
 
 //types
-import { ChildrenDataType } from "@/utils/swr/useGetChildrenData/type";
-
-//utils
-import { useGetChildrenData } from "@/utils/swr/useGetChildrenData";
+import type { ChildrenDataType } from "@/utils/swr/useGetChildrenData/type";
 
 //lib
-import { pageItemsNumber } from "@/lib/paginateConfig/pageItemsNumber";
 import { classNames } from "@/utils/helper/classNames";
 
 type PaginateProps = {
+  data: ChildrenDataType;
   cursor: number;
   setCursor: React.Dispatch<React.SetStateAction<number>>;
+  displayedRows: number;
 };
 
-export function Paginate({ cursor, setCursor }: PaginateProps) {
-  const { childrenData } = useGetChildrenData();
-
-  const pages = Math.ceil(
-    (childrenData as ChildrenDataType)?.length / pageItemsNumber,
-  );
+export function Paginate({
+  data,
+  cursor,
+  setCursor,
+  displayedRows,
+}: PaginateProps) {
+  const pages = Math.ceil(data?.length / displayedRows);
 
   // if there are no pages, return null
   if (!pages) {
