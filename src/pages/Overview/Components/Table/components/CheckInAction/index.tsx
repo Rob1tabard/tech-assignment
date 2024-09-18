@@ -4,7 +4,7 @@ import { PencilSquareIcon } from "@heroicons/react/16/solid";
 import { ChildType } from "@/utils/swr/useGetChildrenData/type";
 
 //components
-import { CheckInModal } from "@/components/Table/components/CheckInAction/CheckInModal";
+import { CheckInModal } from "@/pages/Overview/Components/Table/components/CheckInAction/CheckInModal";
 import { classNames } from "@/utils/helper/classNames";
 
 type CheckInActionProps = {

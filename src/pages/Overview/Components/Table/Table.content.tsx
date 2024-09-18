@@ -1,27 +1,28 @@
 import dayjs from "dayjs";
+import { useAtomValue } from "jotai";
+
+//atoms
+import { displayedChildrenDataAtom } from "@/pages/Overview/atoms/childrenAtom";
 
 //helpers
 import { classNames } from "@/utils/helper/classNames";
 
-//types
-import type { ChildType } from "@/utils/swr/useGetChildrenData/type";
-
 //components
-import { TableWrapper } from "@/components/Table/Table.wrapper";
-import { CheckInAction } from "@/components/Table/components/CheckInAction";
-import { CheckOutAction } from "@/components/Table/components/CheckOutAction";
-import { TableEmpty } from "@/components/Table/Table.empty";
+import { TableWrapper } from "@/pages/Overview/Components/Table/Table.wrapper";
+import { CheckInAction } from "@/pages/Overview/Components/Table/components/CheckInAction";
+import { CheckOutAction } from "@/pages/Overview/Components/Table/components/CheckOutAction";
+import { TableEmpty } from "@/pages/Overview/Components/Table/Table.empty";
 
-type TableContent = { childrenData: ChildType[] };
+export function TableContent() {
+  const displayedChildrenData = useAtomValue(displayedChildrenDataAtom);
 
-export function TableContent({ childrenData }: TableContent) {
-  if (!childrenData.length) {
+  if (!displayedChildrenData?.length) {
     return <TableEmpty message="No children found" />;
   }
 
   return (
     <TableWrapper>
-      {childrenData.map((child) => (
+      {displayedChildrenData.map((child) => (
         <tr key={child.name.fullName}>
           <td className="py-4 pl-4 pr-8 sm:pl-6 lg:pl-8">
             <div className="flex items-center gap-x-4">

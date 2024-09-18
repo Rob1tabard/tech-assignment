@@ -5,7 +5,7 @@ import { ArrowRightStartOnRectangleIcon } from "@heroicons/react/16/solid";
 import { ChildType } from "@/utils/swr/useGetChildrenData/type";
 
 //components
-import { CheckOutModal } from "@/components/Table/components/CheckOutAction/CheckOutModal";
+import { CheckOutModal } from "@/pages/Overview/Components/Table/components/CheckOutAction/CheckOutModal";
 import { classNames } from "@/utils/helper/classNames";
 
 type CheckOutProps = {

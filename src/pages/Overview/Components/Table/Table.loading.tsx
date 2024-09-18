@@ -2,7 +2,7 @@
 import { classNames } from "@/utils/helper/classNames";
 
 //components
-import { TableWrapper } from "@/components/Table/Table.wrapper";
+import { TableWrapper } from "@/pages/Overview/Components/Table/Table.wrapper";
 
 export function TableLoading() {
   return (

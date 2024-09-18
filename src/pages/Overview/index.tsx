@@ -1,3 +1,4 @@
+import { Provider } from "jotai";
 import { OverviewContent } from "@/pages/Overview/Overview.content";
 
 export function Overview() {
@@ -10,7 +11,9 @@ export function Overview() {
           their checkin and checkout time
         </span>
       </header>
-      <OverviewContent />
+      <Provider>
+        <OverviewContent />
+      </Provider>
     </>
   );
 }

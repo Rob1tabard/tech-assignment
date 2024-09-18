@@ -1,3 +1,5 @@
+import { useAtom, useAtomValue } from "jotai";
+// import { useEffect } from "react";
 import {
   ChevronDoubleLeftIcon,
   ChevronDoubleRightIcon,
@@ -5,26 +7,20 @@ import {
   ChevronLeftIcon,
 } from "@heroicons/react/16/solid";
 
-//types
-import type { ChildrenDataType } from "@/utils/swr/useGetChildrenData/type";
+//atom
+import { filteredChildrenDataAtom } from "@/pages/Overview/atoms/childrenAtom";
+import { cursorAtom } from "@/pages/Overview/atoms/cursorAtom";
+import { displayedRowsAtom } from "@/pages/Overview/atoms/displayedRowsAtom";
 
 //lib
 import { classNames } from "@/utils/helper/classNames";
 
-type PaginateProps = {
-  data: ChildrenDataType;
-  cursor: number;
-  setCursor: React.Dispatch<React.SetStateAction<number>>;
-  displayedRows: number;
-};
+export function Paginate() {
+  const data = useAtomValue(filteredChildrenDataAtom);
+  const displayedRows = useAtomValue(displayedRowsAtom);
+  const [cursor, setCursor] = useAtom(cursorAtom);
 
-export function Paginate({
-  data,
-  cursor,
-  setCursor,
-  displayedRows,
-}: PaginateProps) {
-  const pages = Math.ceil(data?.length / displayedRows);
+  const pages = Math.ceil(data?.length / displayedRows.value);
 
   // if there are no pages, return null
   if (!pages) {

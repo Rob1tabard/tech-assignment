@@ -1,5 +1,5 @@
 //components
-import { TableWrapper } from "@/components/Table/Table.wrapper";
+import { TableWrapper } from "@/pages/Overview/Components/Table/Table.wrapper";
 
 export function TableError() {
   return (
