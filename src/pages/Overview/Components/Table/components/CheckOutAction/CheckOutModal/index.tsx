@@ -55,6 +55,9 @@ function CheckOutModalContent({
         `${POST_CHECKOUT_CHILD.replace("<childId>", child.childId)}?${params}`,
         {
           method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
         },
       );
 

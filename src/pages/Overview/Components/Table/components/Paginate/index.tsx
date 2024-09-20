@@ -8,19 +8,15 @@ import {
 } from "@heroicons/react/16/solid";
 
 //atom
-import { filteredChildrenDataAtom } from "@/pages/Overview/atoms/childrenAtom";
 import { cursorAtom } from "@/pages/Overview/atoms/cursorAtom";
-import { displayedRowsAtom } from "@/pages/Overview/atoms/displayedRowsAtom";
+import { pagesAtom } from "@/pages/Overview/atoms/displayedRowsAtom";
 
 //lib
 import { classNames } from "@/utils/helper/classNames";
 
 export function Paginate() {
-  const data = useAtomValue(filteredChildrenDataAtom);
-  const displayedRows = useAtomValue(displayedRowsAtom);
+  const pages = useAtomValue(pagesAtom);
   const [cursor, setCursor] = useAtom(cursorAtom);
-
-  const pages = Math.ceil(data?.length / displayedRows.value);
 
   // if there are no pages, return null
   if (!pages) {
